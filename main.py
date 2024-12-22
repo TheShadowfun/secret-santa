@@ -1,6 +1,5 @@
 from flask import Flask, abort, render_template, request
 from models import db, UserView
-from database_setup import simple_encrypt, simple_decrypt
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///santaDB.db"
@@ -25,13 +24,20 @@ def generate_pairs(names):
 
 def add_people(nameList):
     with app.app_context():
-        for person,target in generate_pairs(nameList):
-
-            user = UserView(
-                user=person,
-                target_encrypted=simple_encrypt(target))
+        # First phase: Create users
+        users = {}
+        for person in nameList:
+            user = UserView(user=person)
+            users[person] = user
             db.session.add(user)
-
+        # Commit to get IDs
+        db.session.commit()
+        
+        # Second phase: Set targets
+        pairs = generate_pairs(nameList)
+        for person, target in pairs:
+            users[person].target_id = users[target].id
+        # Commit target assignments
         db.session.commit()
 
 def update_own_description(user, text):
@@ -53,7 +59,7 @@ def user_route(user_id):
         text = request.form.get("description")
         update_own_description(user, text)
 
-    return render_template("user.html", user=user, target=simple_decrypt(user.target_encrypted))
+    return render_template("user.html", user=user)
     
 
 @app.errorhandler(404)
@@ -62,8 +68,8 @@ def page_not_found(e):
 
 if __name__ == '__main__':
 
-    # reset_db()
-    # testnames = ["Henrik", "Karl", "Rasmus", "Arne", "Art"]
-    # add_people(testnames)
+    #reset_db()
+    #testnames = ["Henrik", "Karl", "Rasmus", "Arne", "Art"]
+    #add_people(testnames)
 
     app.run()

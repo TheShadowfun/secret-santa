@@ -8,9 +8,9 @@
 <body>
     <div>
     {% for person in users %}
-        <p>{{ person.user }} has target {{ person.target_encrypted }}</p>
+        <h1>{{ person.user }}</h1> 
+        <h2>has {{ "" if person.user_description != "pole veel lisatud" else "not" }} updated their description</h2>
     {% endfor %}
-    <p>Encrypted, to keep it fair</p>
     </div>
 </body>
 </html>
