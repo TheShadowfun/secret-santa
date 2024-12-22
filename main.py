@@ -24,20 +24,20 @@ def generate_pairs(names):
 
 def add_people(nameList):
     with app.app_context():
-        # First phase: Create users
+
         users = {}
         for person in nameList:
             user = UserView(user=person)
             users[person] = user
             db.session.add(user)
-        # Commit to get IDs
+        #to get the ID's
         db.session.commit()
         
-        # Second phase: Set targets
+
         pairs = generate_pairs(nameList)
         for person, target in pairs:
             users[person].target_id = users[target].id
-        # Commit target assignments
+            
         db.session.commit()
 
 def update_own_description(user, text):
@@ -67,9 +67,11 @@ def page_not_found(e):
      return "<h1 style='font-size: 10vh; color: red;'>Vale lingi panid, vaata uuesti</h1>", 404
 
 if __name__ == '__main__':
+    app.config['ENV'] = 'production'
+    app.config['DEBUG'] = False
+    app.run(host='0.0.0.0', port=8000) 
+    #gunicorn --bind 0.0.0.0:8000 wsgi:app
 
     #reset_db()
     #testnames = ["Henrik", "Karl", "Rasmus", "Arne", "Art"]
     #add_people(testnames)
-
-    app.run(port=54321)
