@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview</title>
+</head>
+<body>
+    <div>
+    {% for person in users %}
+        <p>{{ person.user }} has target {{ person.target_encrypted }}</p>
+    {% endfor %}
+    <p>Encrypted, to keep it fair</p>
+    </div>
+</body>
+</html>
