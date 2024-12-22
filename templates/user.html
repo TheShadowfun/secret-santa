@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret Santa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/main.css') }}">
 </head>
 <body>
-    <div>
-        <h1> Hello {{ user.user }}</h1>
-        <form method="POST">
+    <div class="user">
+        <h1 class="christmasy"> Häid jõule {{ user.user }}!</h1>
+        <form method="POST" class="user">
             <textarea name="description">{{ user.user_description }}</textarea>
-            <button type="submit">Update Description</button>
+            <button type="submit">Salvesta kirjeldus</button>
         </form>
     </div>
-    <div>
-        <h2>Your target is: {{ user.target.user }}</h2>
-        <p>Target description: {{ user.target.user_description }}</p>
+    <div class="user">
+        <h2>Tee kink, mida <span class="target">{{ user.target.user }}</span> endale väga tahaks!</h2>
+        <h2>Ta on oma kirjeldusse pannud:</h2>
+        <p>{{ user.target.user_description }}</p>
     </div>
 </body>
 </html>

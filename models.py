@@ -6,7 +6,7 @@ db = SQLAlchemy()
 class UserView (db.Model):
     id = db.Column(db.String(13), primary_key=True, default=gen_short_uuid)
     user = db.Column(db.String(MAX_NAME_LENGTH))
-    user_description = db.Column(db.String(100), default="pole veel lisatud")
+    user_description = db.Column(db.String(100), default="kirjuta siia midagi suunavat, et Sulle oleks lihtsam kinki teha")
     target_id = db.Column(db.String(13), db.ForeignKey('user_view.id'))
     target = db.relationship('UserView',
                            uselist=False,

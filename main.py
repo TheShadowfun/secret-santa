@@ -64,7 +64,7 @@ def user_route(user_id):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return "<h1>Vale lingi panid, vaata uuesti</h1>", 404
+     return "<h1 style='font-size: 10vh; color: red;'>Vale lingi panid, vaata uuesti</h1>", 404
 
 if __name__ == '__main__':
 
@@ -72,4 +72,4 @@ if __name__ == '__main__':
     #testnames = ["Henrik", "Karl", "Rasmus", "Arne", "Art"]
     #add_people(testnames)
 
-    app.run()
+    app.run(port=54321)

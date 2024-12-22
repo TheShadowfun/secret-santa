@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'ChristmasFont';
+    src: url('/static/MerryChristmasFlake.ttf') format('truetype');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url('/static/christmas.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    background-color: #910707;
+}
+
+div {
+    background-color: rgba(255, 255, 255, 0.65);
+    padding: max(2.75vh, 1.75vw);
+    margin: max(2.75vh, 2.75vw);
+    border-radius: 10px;
+    max-height: max(50vh, 40vw);
+}
+
+.christmasy {
+    font-family: ChristmasFont;
+    font-weight: 400;
+    font-size: max(8vh, 10vw);
+    color: darkgreen;
+    text-align: center;
+}
+
+.user {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    min-width: 55vw;
+    max-width: 75vw;
+}
+
+textarea {
+    margin: 2vw;
+    padding: 2vw;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+    font-size: max(1.75vh, 1.25vw);
+    min-width: 50vw;
+    max-width: 75vw;
+    min-height: 10vh;
+    max-height: 15vh;
+}
+
+textarea:active, textarea:focus {
+    outline: none;
+    border: 2px solid #910707;
+    box-shadow: 0 0 10px rgba(145, 7, 7, 0.5);
+    transform: scale(1.01);
+    opacity: 1;
+}
+
+button {
+    padding: 1vw;
+    border-radius: 10px;
+    background-color: #a91212;
+    color: whitesmoke;
+    font-size: max(2vh, 1.75vw);
+    max-width: 20vw;
+    transition: all 0.3s ease;
+}
+
+button:active {
+    outline: none;
+    border: 8px solid #910707;
+    box-shadow: 0 0 10px rgba(145, 7, 7, 0.5);
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.target {
+    font-size: max(3vh, 4vw);
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: max(2.5vh, 2.5vw);
+    text-align: center;
+    margin: max(0.75vh, 0.75vw);
+}
+
+p {
+    font-size: max(2vh, 1.5vw);
+    text-align: center;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-width: 75vw;
+    margin: 0 auto;
+    padding: 1rem;
+    white-space: pre-wrap;
+}
+
+.overview {
+    height: 10vh;
+    background-color: rgba(255, 255, 255, 0.45);
+    padding: max(1.25vh, 1.25vw);
+    margin: max(0.75vh, 0.75vw);
+    border-radius: 10px;
+    max-height: max(50vh, 40vw);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: max(37.5vw, 37.5vh);
+}
+
+.overview h1, .overview h2 {
+    text-align: center;
+}
