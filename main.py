@@ -2,6 +2,7 @@ from flask import Flask, abort, render_template, request
 from models import db, UserView
 
 app = Flask(__name__)
+app.config["PREFERRED_URL_SCHEME"] = "https"
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///santaDB.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
