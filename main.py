@@ -6,6 +6,14 @@ app.config["PREFERRED_URL_SCHEME"] = "https"
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///santaDB.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+@app.after_request
+def add_security_headers(response):
+    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    response.headers['Content-Security-Policy'] = "default-src 'self' https:; style-src 'self' https: 'unsafe-inline'"
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['Permissions-Policy'] = 'private-state-token-redemption=(), private-state-token-issuance=(), browsing-topics=()'
+    return response
+
 db.init_app(app)
 
 def reset_db():
