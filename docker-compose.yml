@@ -13,17 +13,7 @@ services:
       - FLASK_APP=main.py
       - FLASK_ENV=production
       - SQLALCHEMY_DATABASE_URI=sqlite:///santaDB.db
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000"]
-      interval: 60s
-      timeout: 10s
-      retries: 3
     restart: unless-stopped
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
     deploy:
       resources:
         limits:
